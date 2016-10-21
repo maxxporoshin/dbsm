@@ -1,0 +1,31 @@
+.nav > * {
+    float: left;
+    margin: 20px;
+}
+
+.nav:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.tab.active, .sidenav-item.active {
+    border: 1px solid black;
+}
+
+.tab {
+    cursor: pointer;
+}
+
+.content-queries, .content-triggers {
+    display: none;
+}
+
+.sidenav {
+    width: 100px;
+}
+
+.sidenav-item {
+    margin: 10px;
+    cursor: pointer;
+}
