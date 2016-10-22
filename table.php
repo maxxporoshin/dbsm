@@ -13,9 +13,7 @@ if ($_POST['name']) {
 			if (is_object($val)) {
 				$val = $val->load();
 			}
-			if (!is_null($val)) {
-				$r[$key] = htmlentities($val, ENT_QUOTES);
-			}
+			$r[$key] = htmlentities($val, ENT_QUOTES);
 		}
 		$table[] = $r;
 	}

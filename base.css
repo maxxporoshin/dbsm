@@ -29,3 +29,8 @@
     margin: 10px;
     cursor: pointer;
 }
+
+.table * {
+    padding: 10px;
+    border: 1px black solid;
+}
