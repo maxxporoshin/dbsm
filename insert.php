@@ -2,10 +2,18 @@
 
 require_once('database.php');
 
-if ($_POST['table'] && $_POST['column'] && $_POST['id'] && $_POST['id-column'] && $_POST['new']) {
+if ($_POST['table'] && $_POST['data']) {
 	$c = connect();
-	$q = "UPDATE " . $_POST['table'] . " SET " . $_POST['column'] . " = '" . $_POST['new'] . "' WHERE "
-		. $_POST['id-column'] . " = " . $_POST['id'];
+	$q = "INSERT INTO " . $_POST['table'] . " VALUES ( ";
+	$first = true;
+	foreach($_POST['data'] as $col) {
+		if (!$first) {
+			$q .= ", ";
+		}
+		$q .= "'" . $col . "'";
+		$first = false;
+	}
+	$q .= ")";
 	$s = oci_parse($c, $q);
 	if (!oci_execute($s)) {
 		$error = oci_error($s);

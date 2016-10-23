@@ -1,3 +1,7 @@
+html, body, .nav {
+    width: 100%;
+}
+
 .nav > * {
     float: left;
     margin: 20px;
@@ -9,29 +13,95 @@
     clear: both;
 }
 
-.tab.active, .sidenav-item.active {
-    border: 1px solid black;
+.tab.active {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.tab {
+    padding: 8px 0;
+    margin: 0;
+    width: 32%;
+    text-align: center;
 }
 
 .tab {
     cursor: pointer;
 }
 
+.sidenav-item.active {
+    border: 1px solid black;
+}
+
 .content-queries, .content-triggers {
     display: none;
+    margin: 10px;
 }
 
 .sidenav-item {
-    margin: 10px;
+    margin: 15px 5px;
+    padding: 5px;
     cursor: pointer;
     float: left;
 }
 
+th {
+    text-align: left;
+}
+
+.table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td, th {
+    padding-left: 5px;
+}
+
 .table td, .table th {
-    padding: 10px 15px;
     border: 1px black solid;
+    padding-left: 5px;
+}
+
+.table > tr:last-child td {
+    padding: 0;
+}
+
+.table tr > td:last-child {
+    border: none;
+    vertical-align: center;
+}
+
+.table td, .table th {
+    min-width: 50px;
+    width: 100px;
+    margin: 0;
 }
 
 .table input {
-    width: 50px;
-}s
+    display: table-cell;
+    width: 95%;
+    height: 80%;
+    margin: 0;
+}
+
+.changing {
+    text-align: center;
+}
+
+.execute {
+    position: absolute;
+    right: 0;
+}
+
+.content-queries > div {
+    position: relative;
+    width: 50%;
+}
+
+.content-queries textarea {
+    width: 100%;
+}

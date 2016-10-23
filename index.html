@@ -19,16 +19,17 @@
 
 
     <div class="content content-queries">
-        <div><input type="text"><button>Execute</button></div>
-        <div><input type="text"><button>Execute</button></div>
-        <div><input type="text"><button>Execute</button></div>
+        <div><h4>Query 1</h4><textarea class="query" rows="3"></textarea><br><button class="execute">Execute</button></div>
+        <div><h4>Query 2</h4><textarea class="query" rows="3"></textarea><br><button class="execute">Execute</button></div>
+        <div><h4>Query 3</h4><textarea class="query" rows="3"></textarea><br><button class="execute">Execute</button></div>
+        <div class="error"></div>
+        <table class="result"></table>
     </div>
 
 
     <div class="content content-triggers">
-        <div>trigger1 <input type="checkbox"></div>
-        <div>trigger2 <input type="checkbox"></div>
-        <div>trigger3 <input type="checkbox"></div>
+    	<table class="triggers"></table>
+    	<div class="trigger-body"></div>
     </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>

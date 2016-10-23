@@ -2,10 +2,9 @@
 
 require_once('database.php');
 
-if ($_POST['table'] && $_POST['column'] && $_POST['id'] && $_POST['id-column'] && $_POST['new']) {
+if ($_POST['need-to'] && $_POST['trigger']) {
 	$c = connect();
-	$q = "UPDATE " . $_POST['table'] . " SET " . $_POST['column'] . " = '" . $_POST['new'] . "' WHERE "
-		. $_POST['id-column'] . " = " . $_POST['id'];
+	$q = "ALTER TRIGGER " . $_POST['trigger'] . " " . $_POST['need-to'];
 	$s = oci_parse($c, $q);
 	if (!oci_execute($s)) {
 		$error = oci_error($s);
