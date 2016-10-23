@@ -3,7 +3,7 @@
     margin: 20px;
 }
 
-.nav:after {
+.nav:after, .sidenav:after {
     content: '';
     display: block;
     clear: both;
@@ -21,16 +21,17 @@
     display: none;
 }
 
-.sidenav {
-    width: 100px;
-}
-
 .sidenav-item {
     margin: 10px;
     cursor: pointer;
+    float: left;
 }
 
-.table * {
-    padding: 10px;
+.table td, .table th {
+    padding: 10px 15px;
     border: 1px black solid;
 }
+
+.table input {
+    width: 50px;
+}s
