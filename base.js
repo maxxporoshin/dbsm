@@ -105,6 +105,11 @@ function fetchTable(name) {
                             alert(data['message']);
                         } else {
                             fetchTable(table);
+                            if (table == 'N_VISIT') {
+                                if (data != 1 && data != 2 && data != '') {
+                                    alert(data);
+                                }
+                            }
                         }
                 }, 'json');
             });
@@ -145,7 +150,12 @@ function initKeys() {
                             changingField = null;
                             oldVal = null;
                             fetchTable(table);
-                    }
+                            if (table == 'N_VISIT') {
+                                if (data != 1 && data != 2 && data != '') {
+                                    alert(data);
+                                }
+                            }
+                        }
                 }, 'json');
             }
             if (e.which == 27) { //esc
@@ -164,11 +174,27 @@ function cancelEditing() {
 }
 
 function initQueries() {
+    $('.q1').val('select * from patient where ID in (select distinct patient_id from visit where visit.VISIT_DATE=str_to_date(?,' + "'" + 'dd-mm-yyyy' + "'" + '))');
+    $('.q2').val('select * from n_patient where ID not in (select distinct patient_id from n_visit where doctor_id is not null)');
+    $('.q3').val('select EXTRACT(month from visit_date) as month, sum(price) as sum ' + 
+            'from visit where EXTRACT(year from visit_date) = ? ' + 
+              'group by EXTRACT(month from visit_date)' + 
+              ' ORDER BY MONTH');
     $('.execute').on('click', function() {
         $('.result').empty();
         $('.error').empty();
         let queryName = $(this).parent().find('h4').text();
         let query = $(this).parent().find('textarea').val();
+        if ($(this).hasClass('e1')) {
+            query = 'select * from n_patient where ID in (select distinct patient_id from n_visit ' 
+                +'where n_visit.VISIT_DATE=to_date(' + "'" + $('.qq1').val() + "'" + ', ' + "'" + 'dd-mm-yyyy' + "'" + '))';
+        }
+        if ($(this).hasClass('e3')) {
+            query = 'select EXTRACT(month from visit_date) as month, sum(price) as sum '+ 
+            'from n_visit where EXTRACT(year from visit_date) = ' + $('.qq3').val() + ' ' + 
+              'group by EXTRACT(month from visit_date) '+ 
+              ' ORDER BY MONTH';
+        }
         $.post('query.php', { 'query': query }, function(data){
             if (data['error']) {
                 $('.error').append('<h3>' + queryName + ' Error</h3>').append(data['message']);
@@ -246,7 +272,7 @@ function fetchTriggers() {
                     $triggerBody = $('.trigger-body');
                     $triggerBody.empty();
                     $triggerBody.append('<h3>' + trigger + ' BODY</h3>');
-                    $triggerBody.append(data.replace(/\n/g, '<br>'));
+                    $triggerBody.append(data[0]['TRIGGER_BODY'].replace(/\n/g, '<br>'));
                 }
             }, 'json');
         });

@@ -12,7 +12,7 @@ if (!oci_execute($s)) {
 } else {
 	$tables = [];
 	while ($row = oci_fetch_array($s, OCI_RETURN_NULLS + OCI_ASSOC)) {
-		if (substr($row['TABLE_NAME'], 0, 2) === 'Z_') {
+		if (substr($row['TABLE_NAME'], 0, 2) === 'N_') {
 			$tables[] = $row['TABLE_NAME'];
 		}
 	}

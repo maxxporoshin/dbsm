@@ -19,7 +19,9 @@ if (!oci_execute($s)) {
 			}
 			$r[$key] = htmlentities($val, ENT_QUOTES);
 		}
-		$result[] = $r;
+		if (substr($r['TRIGGER_NAME'], 0, 2) === 'N_') {
+			$result[] = $r;			
+		}
 	}
 	echo json_encode($result);
 }

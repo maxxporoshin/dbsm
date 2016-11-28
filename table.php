@@ -10,8 +10,8 @@ if ($_POST['name']) {
 		$error['error'] = true;
 		echo json_encode($error);
 	} else {
-		$table = [];
-		while ($row = oci_fetch_array($s, OCI_ASSOC)) {
+		$table = [];		
+		while ($row = oci_fetch_array($s, OCI_RETURN_NULLS + OCI_ASSOC)) {
 			$r = [];
 			foreach ($row as $key => $val) {
 				if (is_object($val)) {

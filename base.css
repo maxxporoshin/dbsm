@@ -63,7 +63,10 @@ td, th {
 
 .table td, .table th {
     border: 1px black solid;
-    padding-left: 5px;
+    padding-left: 5px !important;
+    min-width: 50px;
+    width: 100px;
+    margin: 0;
 }
 
 .table > tr:last-child td {
@@ -73,12 +76,6 @@ td, th {
 .table tr > td:last-child {
     border: none;
     vertical-align: center;
-}
-
-.table td, .table th {
-    min-width: 50px;
-    width: 100px;
-    margin: 0;
 }
 
 .table input {
@@ -104,4 +101,8 @@ td, th {
 
 .content-queries textarea {
     width: 100%;
+}
+
+.insert, .delete {
+    width: 21px;
 }
